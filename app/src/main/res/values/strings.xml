@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SEII_Einzelbeispiel</string>
+    <string name="enter_your_student_number">Enter your student number</string>
+    <string name="send">Send</string>
+    <string name="calculate">Calculate</string>
+    <string name="answer">Answer</string>
+    <string name="_123456">123456</string>
 </resources>
