@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Button btn;
@@ -88,5 +89,60 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        btn_calc.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                String respo = editText.getText().toString();
+                String[] inputVals = respo.split("");
+                int[] numIn = new int[inputVals.length];
+
+                for (int i = 0; i < inputVals.length; i++) {
+                    numIn[i] = Integer.parseInt(inputVals[i]);
+                }
+
+                ArrayList<Integer> retList = bubbleSortAlgorithm(numIn);
+
+
+                txtViewAnswer.setText(retList.toString());
+
+
+            }
+        });
+
+    }
+
+    static ArrayList<Integer> bubbleSortAlgorithm(int[] rr) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
+        for (int i = 0; i < rr.length; i++) {
+            for (int j = 0; j < rr.length; j++) {
+                if (rr[i] <= rr[j]) {
+                    int helper = rr[i];
+                    rr[i] = rr[j];
+                    rr[j] = helper;
+                }
+            }
+        }
+        for (int i = 0; i < rr.length; i++) {
+            if (!isPrime(rr[i])) {
+
+                arrayList.add(rr[i]);
+            }
+        }
+        return arrayList;
+    }
+    // https://java.soeinding.de/content.php/primzahl
+
+    static boolean isPrime(int num) {
+        if (num < 2) {
+            return false;
+        } else {
+            for (int i = 2; i < num; i++) {
+                if (num % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
